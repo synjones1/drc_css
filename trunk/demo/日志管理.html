@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>日志管理</title>
+<link rel="stylesheet" type="text/css" href="themes/default/style.css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.tinyscrollbar.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/dialog.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+
+//数据列表
+if ($.fn.pagination){
+	$.fn.pagination.defaults.beforePageText = '第';
+	$.fn.pagination.defaults.afterPageText = '共{pages}页';
+	$.fn.pagination.defaults.displayMsg = '显示{from}到{to},共{total}记录';
+}
+
+$('#tt').datagrid({
+	loadMsg:'加载数据...',
+	url: 'data/data12.json',
+	title: false,
+	width: "100%",
+	height: $(window).height()-322,
+	fitColumns: true,
+	nowrap:false,
+	striped:true,
+	fit:true,
+	pagination:true,
+	rownumbers:true,
+	columns:[[
+		{field:'name',title:'时间',width:80},
+		{field:'apiurl',title:'用户',width:120},
+		{field:'count',title:'操作内容',width:200},
+		{field:'ip',title:'操作IP',width:80}
+	]]
+});
+
+//日期
+$('#data1').datebox({
+    width:"120",panelWidth:"220",value:"起始日期",onSelect:function(){alert($(this).attr("id"))},border:false
+}); 
+$('#data2').datebox({
+    width:120,panelWidth:220,value:"结束日期"
+}); 
+
+});
+
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		
+		
+<br/>
+
+<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>日志管理</strong></div></div>
+<!-- 列表 -->
+
+<div class="tabContent">
+
+		<ul class="expand-item-ul">
+			<li style="width:30%;"><dl><dt>操作员</dt><dd><input class="textinput_s" type="text"></dd></dl></li>
+			<li style="width:30%;"><dl><dt>操作类型</dt><dd><select><option>查询</option><option>Admin</option><option>Synjones</option><option>Kjji</option></select></li>
+			<li style="width:30%;"><dl><dt>操作内容</dt><dd><select><option>All</option><option>Admin</option><option>Synjones</option><option>Kjji</option></select></dd></dl></li>
+			<li style="margin-top: -5px;width:auto;">
+				<a title="查询" class="button btn-save" id="confirm" style="margin-top: 1px;"><i></i><span><img class="icon ico-zoomlight" alt="" src="themes/default/images/blank.gif">查 询</span><s></s></a>
+			</li>
+		</ul>
+		
+	</div>
+
+<div class="datagrid-wrap">
+	<table id="tt"></table>
+</div>
+<!-- 列表 End -->
+	</div>
+	
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+</body>
+</html>

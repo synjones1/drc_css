@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>添加角色</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+
+//树结构
+$('#tt2').tree({
+	checkbox: true,
+	url: 'data/resourcetype.json',
+	onClick:function(node){
+		$(this).tree('toggle', node.target);
+		//alert('you click '+node.text);
+	},
+	onContextMenu: function(e, node){
+		e.preventDefault();
+		$('#tt2').tree('select', node.target);
+		$('#mm').menu('show', {
+			left: e.pageX,
+			top: e.pageY
+		});
+	}
+});
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>添加角色</strong></div></div>
+	
+<div class="formdiv" style="padding:0 1px;margin:0;">
+	<div class="box">
+		<table cellspacing="0" cellpadding="10" class="formtable">
+			<tbody>
+			<tr>
+				<th width="220">角色名称：</th>
+				<td colspan="3"><input type="text" class="textinput" style="width:300px;"/> <span class="red_low">*</span></td>
+			</tr>
+			
+			<tr>
+				<th>角色代码：</th>
+				<td colspan="3"><input type="text" class="textinput" style="width:300px;"/> <span class="red_low">*</span></td>
+			</tr>
+			
+			<tr>
+				<th>可用标志：</th>
+				<td colspan="3"><input type="radio" class="radio"/>是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="radio"/>是</td>
+			</tr>
+			<tr>
+				<th valign="top">描<span style="padding-left:28px;">述：</span></th>
+				<td valign="top" colspan="3">
+					<textarea cols="50" rows="6"></textarea>
+					<div style="padding:8px 0 0;color:#999;">最多输入字数：50</div>
+				</td>
+			</tr>
+			<tr>
+				<th height="205" valign="top">&nbsp;</th>
+				<td valign="top" colspan="3">
+				<br/>
+				<br/>
+				<a title="增加" class="button btn-save"><i></i><span>增加</span><s></s></a>
+				<a title="返回" class="button btn-back"><i></i><span><img class="icon ico-back" alt="" src="themes/default/images/blank.gif">返回</span><s></s></a>
+				</td>
+			</tr>
+			
+		</table>
+	</div>
+</div>
+	
+	
+</div>
+
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+
+</body>
+</html>

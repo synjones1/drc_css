@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数据资源中心</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery-powerFloat-min.js"></script>
+<script type="text/javascript" src="scripts/plugins/dialog.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+	var LoadingText = "加载";
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+	
+			$('#test').datagrid({
+				title:false,
+				iconCls:false,
+				fitColumns:true,
+				width:"auto",
+				height:440,
+				nowrap: false,
+				striped: true,
+				collapsible:true,
+				url:'data/datagrid_data.json',
+				sortName: 'code',
+				sortOrder: 'desc',
+				remoteSort: false,
+				idField:'code',
+				frozenColumns:[[
+	                {title:'',field:'code',width:35,align:'center',
+						formatter:function(value,rec){
+							return '<a href="javascript:void(0)"><img src="themes/default/images/blank.gif" class="icon ico-add" alt="" /></a>';
+						}},
+	                {field:'ck',checkbox:true}
+				]],
+				columns:[[
+			        {title:'基本信息',colspan:4},
+					{title:'引用信息', colspan:2}
+				],[
+					{field:'name',title:'中文名称',width:120},
+					{field:'addr',title:'字段名',width:220,rowspan:2,sortable:true,
+						sorter:function(a,b){
+							return (a>b?1:-1);
+						}
+					},
+					{field:'col4',title:'字段类型',width:150,rowspan:2},
+					{field:'col5',title:'字段长度',width:150,rowspan:2},
+					{field:'col6',title:'引用信息',width:150,rowspan:2},
+					{field:'col7',title:'其他信息',width:150,rowspan:2}
+				]],
+				pagination:false,
+				rownumbers:true,
+				toolbar:[{
+					id:'btnadd',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-addserver" alt="" />添加',
+					iconCls:false,
+					handler:function(){
+						$('#dlg').dialog('open');
+					}
+				},{
+					id:'btncut',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />删除',
+					iconCls:false,
+					handler:function(){
+						$('#btnsave').linkbutton('enable');
+						alert('cut')
+					}
+				}]
+			});
+
+$('#dlg').dialog({  
+    title: '添加字段',  
+    width: 800,  
+    height: "auto",  
+    closed: false,  
+    cache: false,  
+    modal: true,
+    closed:true
+}); 
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>表结构</strong></div></div>
+<div class="border no-double-top">
+	<div class="box">
+
+
+
+		<div class="usertype-wrap">
+<!-- 步骤 -->
+<div class="setupdiv step5">
+	<ul>
+		<li class="passed">选择标准<span class="sprite excision has-excision"></span></li>
+		<li class="passed">添加表结构<span class="sprite excision has-excision-last"></span></li>
+		<li class="current">添加表字段<span class="sprite excision"></span></li>
+		<li>生成标准<span class="sprite excision"></span></li>
+		<li>完成<span class="last-span"></span></li>
+	</ul>
+</div>
+<!-- 步骤End -->
+<br/>
+<table id="test"></table>
+
+
+		  		
+			</div> 
+
+
+		</div>
+	</div>
+</div>
+
+<div class="formdiv border no-double-top" style="padding:10px 0 6px;">
+		<div class="float-right">
+			<a class="button btn-save" title="上一步" href="2.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-back-light" alt="" />上一步</span><s></s></a>
+			<a class="button btn-save" title="下一步" href="4.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-ok-light" alt="" />下一步</span><s></s></a>
+			<a class="button btn-back" title="取消" href="1.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />取消</span><s></s></a>
+		</div>
+		<div class="clearfix"></div>
+</div>
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+<div id="dlg">
+
+<div class="formdiv" style="padding:0;">
+	<div class="box">
+			<div class="repeat table-head"><div>字段定义</div></div>
+			<table cellspacing="0" cellpadding="10" class="formtable">
+			<tbody>
+			<tr>
+				<th width="120">引用字段：</th>
+				<td colspan="3"><select style="width: 230px;"><option>Name</option></select></td>
+			</tr>
+			
+			<tr>
+				<th>名<span style="padding-left:24px;">称：</span></th>
+				<td><input style="width: 220px;" class="textinput" type="text"/></td>
+				<th style="background:none;">中文简称：</th>
+				<td><input style="width: 220px;" class="textinput" type="text"/></td>
+			</tr>
+			<tr>
+				<th>类<span style="padding-left:24px;">型：</span></th>
+				<td><select style="width: 230px;"><option>引用</option></select></td>
+				<th style="background:none;">长<span style="padding-left:24px;">度：</span></th>
+				<td><input style="width: 220px;" class="textinput" type="text"/></td>
+			</tr>
+			<tr>
+				<th>约<span style="padding-left:24px;">束：</span></th>
+				<td colspan="3"><input style="width: 220px;" class="textinput" type="text"/></td>
+			</tr>
+			<tr>
+				<th>描<span style="padding-left:24px;">述：</span></th>
+				<td colspan="3"><textarea cols="60" rows="6"></textarea></td>
+			</tr>
+		</table>
+			<div class="repeat table-head"><div>字段定义数据操作</div></div>
+			<table cellspacing="0" cellpadding="10" class="formtable">
+			<tbody>
+			<tr>
+				<th width="120">&nbsp;</th>
+				<td><input class="checkbox" type="checkbox"/>显示<span style="padding-left:40px;"><input class="checkbox" type="checkbox"/>查询</span></td>
+			</tr>
+			
+			<tr>
+				<th>&nbsp;</th>
+				<td>
+					<a class="button btn-save" id="sys-create" title="注册"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-ok-light" alt="" />添 加&nbsp;</span><s></s></a>
+					<a class="button btn-back" id="sys-create" title="取 消"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />取 消&nbsp;</span><s></s></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+</div>
+
+</body>
+</html>

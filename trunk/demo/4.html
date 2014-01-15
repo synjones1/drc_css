@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数据资源中心</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery-powerFloat-min.js"></script>
+<script type="text/javascript" src="scripts/plugins/dialog.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+	var LoadingText = "加载";
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+	
+//计算宽度
+$(window).resize(function(){
+	var editWidth = ($(".datagrid-div ul").width()-$(".datagrid-div ul li.sort").width()-$(".datagrid-div ul li.u").width())/5-5;
+	$(".datagrid-div ul li.lw").width(editWidth);
+})
+$(window).load(function(){
+	var editWidth = ($(".datagrid-div ul").width()-$(".datagrid-div ul li.sort").width()-$(".datagrid-div ul li.u").width())/5-5;
+	$(".datagrid-div ul li.lw").width(editWidth);
+})
+$(".datagrid-div ul:even").addClass("even");
+$(".gridbody-div ul:last").addClass("last");
+$(".datagrid-div ul").hover(function(){
+	$(this).addClass("hover");
+},function(){
+	$(this).removeClass("hover");
+})
+
+	
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>生成标准</strong></div></div>
+<div class="border no-double-top">
+	<div class="box">
+
+		<div class="usertype-wrap">
+<!-- 步骤 -->
+<div class="setupdiv step5">
+	<ul>
+		<li class="passed">选择标准<span class="sprite excision has-excision"></span></li>
+		<li class="passed">添加表分类<span class="sprite excision has-excision"></span></li>
+		<li class="passed">引用标准<span class="sprite excision has-excision"></span></li>
+		<li class="passed">编辑表字段<span class="sprite excision has-excision-last"></span></li>
+		<li class="current">生成标准<span class="last-span"></span></li>
+	</ul>
+</div>
+<!-- 步骤End -->
+
+<div class="head"><s class="sprite"></s><div class="head-box repeat"><strong>生成分类... 0/6</strong></div><i class="sprite"></i></div>
+<div class="border" >
+	<table cellpadding="6" cellspacing="1" width="100%">
+		<tr style="background-color:#CDE1FF;">
+			<td width="20"><img src="themes/default/images/blank.gif" class="icon ico-ok2" alt="" /></td>
+			<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 测试</td>
+		</tr>
+		<tr style="background-color:#FFFFC1;">
+			<td width="20"><img src="themes/default/images/blank.gif" class="icon ico-stoped" alt="" /></td>
+			<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 学生管理类代码集</td>
+		</tr>
+		<tr>
+			<td width="20"><img src="themes/default/images/blank.gif" class="icon ico-load" alt="" /></td>
+			<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 测试</td>
+		</tr>
+		<tr style="background-color:#FAFAFA;">
+			<td width="20"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></td>
+			<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 测试</td>
+		</tr>
+	</table>
+</div>
+
+<div class="head"><s class="sprite"></s><div class="head-box repeat"><strong>生成表记录... 2/6</strong></div><i class="sprite"></i></div>
+
+		<!-- 系统列表 -->
+
+<div class="datagrid-div">
+	<ul class="datagrid-head-ul">
+		<li class="sort"><div class="inner-div">#</div></li>
+		<li class="lw"><div class="inner-div">字段名称</div></li>
+		<li class="lw"><div class="inner-div">中文简称</div></li>
+		<li class="lw"><div class="inner-div">字段类型</div></li>
+		<li class="lw"><div class="inner-div">字段长度</div></li>
+		<li class="lw"><div class="inner-div">引用编号</div></li>
+	</ul>
+	<div class="gridbody-div" style="max-height:180px;">
+		<ul style="background-color:#CDE1FF;">
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-ok2" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">学号</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-load" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">姓名</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">性别</div></li>
+			<li class="lw"><div class="inner-div">-</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul class="diff">
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">身份</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">所属院系</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">身份</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">学号/工号</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">部门</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div"><img src="themes/default/images/blank.gif" class="icon ico-wait" alt="" /></div></li>
+			<li class="lw"><div class="inner-div">民族</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">11</div></li>
+			<li class="lw"><div class="inner-div">籍贯</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">12</div></li>
+			<li class="lw"><div class="inner-div">邮政编码</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">13</div></li>
+			<li class="lw"><div class="inner-div">证件类型</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">14</div></li>
+			<li class="lw"><div class="inner-div">住址</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">15</div></li>
+			<li class="lw"><div class="inner-div">政治面貌</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">16</div></li>
+			<li class="lw"><div class="inner-div">身份类别</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">17</div></li>
+			<li class="lw"><div class="inner-div">联系电话</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">18</div></li>
+			<li class="lw"><div class="inner-div">出生日期</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">19</div></li>
+			<li class="lw"><div class="inner-div">进校日期</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">20</div></li>
+			<li class="lw"><div class="inner-div">国家/地区</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">21</div></li>
+			<li class="lw"><div class="inner-div">电子邮件</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">22</div></li>
+			<li class="lw"><div class="inner-div">证件号码</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul class="diff">
+			<li class="sort"><div class="inner-div">23</div></li>
+			<li class="lw"><div class="inner-div">有效日期</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">24</div></li>
+			<li class="lw"><div class="inner-div">联系电话</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+		<ul>
+			<li class="sort"><div class="inner-div">25</div></li>
+			<li class="lw"><div class="inner-div">出生日期</div></li>
+			<li class="lw"><div class="inner-div">222</div></li>
+			<li class="lw"><div class="inner-div">222222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+			<li class="lw"><div class="inner-div">22222</div></li>
+		</ul>
+	</div>
+</div>
+		<!-- 系统列表 End -->
+
+
+<div class="head"><s class="sprite"></s><div class="head-box repeat"><strong>生成表模型</strong></div><i class="sprite"></i></div>
+	<table cellpadding="6" cellspacing="1" width="100%">
+		<tr>
+			<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 测试</td>
+			<td width="20"><img src="themes/default/images/blank.gif" class="icon ico-ok" alt="" /></td>
+		</tr>
+		<tr style="background-color:#FAFAFA;">
+			<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 学生管理类代码集</td>
+			<td width="20"><img src="themes/default/images/blank.gif" class="icon ico-stoped" alt="" /></td>
+		</tr>
+		<tr>
+			<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 测试</td>
+			<td width="20"><img src="themes/default/images/blank.gif" class="icon ico-ok" alt="" /></td>
+		</tr>
+	</table>
+
+		</div>
+	</div>
+</div>
+<button type="button" disabled>Click Me!</button>
+<div class="formdiv border no-double-top" style="padding:10px 0 6px;">
+		<div class="float-right">
+			<a class="button btn-save" title="上一步" href="2.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-ok-light" alt="" />上一步</span><s></s></a>
+			<a class="button btn-disable" title="下一步"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-ok-disable" alt="" />下一步</span><s></s></a>
+			<a title="生成标准" class="button btn-back btn-current" href="javascript:void(0);"><i></i><span><img class="icon ico-ok-light" alt="" src="themes/default/images/blank.gif">生成标准</span><s></s></a>
+			<a class="button btn-back" title="取消" href="1.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />取消</span><s></s></a>
+		</div>
+		<div class="clearfix"></div>
+</div>
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+</body>
+</html>

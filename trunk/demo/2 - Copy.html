@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>引用</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery-powerFloat-min.js"></script>
+<script type="text/javascript" src="scripts/plugins/dialog.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+	var LoadingText = "加载";
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+	
+			$('#tt2').tree({
+				checkbox: true,
+				url: 'data/resourcetype.json',
+				onClick:function(node){
+					$(this).tree('toggle', node.target);
+					//alert('you click '+node.text);
+				},
+				onContextMenu: function(e, node){
+					e.preventDefault();
+					$('#tt2').tree('select', node.target);
+					$('#mm').menu('show', {
+						left: e.pageX,
+						top: e.pageY
+					});
+				}
+			});
+
+			$('#test').datagrid({
+				title:"标准表结构",
+				iconCls:false,
+				fitColumns:true,
+				width:"auto",
+				height:440,
+				nowrap: false,
+				striped: true,
+				collapsible:true,
+				url:'data/datagrid_data.json',
+				sortName: 'code',
+				sortOrder: 'desc',
+				remoteSort: false,
+				idField:'code',
+				frozenColumns:[[
+	                {title:'',field:'code',width:35,align:'center',
+						formatter:function(value,rec){
+							return '<a href="javascript:void(0)"><img src="themes/default/images/blank.gif" class="icon ico-add" alt="" /></a>';
+						}},
+	                {field:'ck',checkbox:true}
+				]],
+				columns:[[
+			        {title:'基本信息',colspan:4},
+					{title:'引用信息', colspan:2}
+				],[
+					{field:'name',title:'中文名称',width:120},
+					{field:'addr',title:'字段名',width:220,rowspan:2,sortable:true,
+						sorter:function(a,b){
+							return (a>b?1:-1);
+						}
+					},
+					{field:'col4',title:'字段类型',width:150,rowspan:2},
+					{field:'col5',title:'字段长度',width:150,rowspan:2},
+					{field:'col6',title:'引用信息',width:150,rowspan:2},
+					{field:'col7',title:'其他信息',width:150,rowspan:2}
+				]],
+				pagination:false,
+				rownumbers:true
+			});
+
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>学校标准</strong></div></div>
+<div class="border no-double-top">
+	<div class="box">
+
+		<div class="usertype-wrap">
+
+<!-- 步骤 -->
+<div class="setupdiv step5">
+	<ul>
+		<li class="passed">选择标准<span class="sprite excision has-excision"></span></li>
+		<li class="passed">添加表分类<span class="sprite excision has-excision-last"></span></li>
+		<li class="current">引用标准<span class="sprite excision"></span></li>
+		<li class="">编辑表字段<span class="sprite excision"></span></li>
+		<li>生成标准<span class="last-span"></span></li>
+	</ul>
+</div>
+<!-- 步骤End -->
+<br/>
+
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="300" valign="top">
+				<div class="inner-west">
+				
+					<div class="ui-layout-head">点击选择引用标准</div>
+					
+					<!--文本框查询 begin-->
+					<div class="sideleft-panel-search">
+						<dl>
+							<dd><input class="textinput" style="width:256px;padding:3px 3px 3px;" id="code" /></dd><dd style="padding-right:0;"><a id="serch" href="javascript:void(0);"><img src="themes/default/images/blank.gif" class="icon ico-search-24" alt="" /></a></dd>
+						</dl>
+					</div>
+					<!--文本框查询 结束-->
+							
+					<div class="inner-panel-box" id="weastCotent" >
+						<div class="addpathtips">
+						<span class="exaction"><a href="javascript:void(0)" title="展开全部"><img src="themes/default/images/blank.gif" class="icon ico-plus" alt="" /></a><a href="javascript:void(0)"><img src="themes/default/images/blank.gif" class="icon ico-minus" alt="" /></a></span>
+						分类(<span class="red_low">点击选择新建路径</span>)</div>
+					
+						<div id="tree" style="border:1px solid #ccc;background:#fff;height: 420px; overflow-y: auto;">
+							<ul id="tt2"></ul>
+						</div>  
+
+						</div>
+					</div>
+					
+					<dl class="footerBar">
+						<dd>&nbsp;<span class="red_low">*</span>点击父节点显示其子节点的定义</dd>
+					</dl>
+				</div> 
+		
+		</td>
+		<td width="4"></td>
+		<td valign="top">
+		  		<div class="inner-center">
+		  		<div class="ui-layout-head"></div>
+					<div class="ui-layout-baseinfo" style="height:auto;">
+
+<div class="formdiv" style="padding:0 1px;margin:0;">
+	<div class="box">
+		<table cellspacing="0" cellpadding="10" class="formtable">
+			<tbody>
+			<tr>
+				<th width="70">分类路径：</th>
+				<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 学生管理类代码集</td>
+			</tr>
+			
+			<tr>
+				<th>复制类型：</span></th>
+				<td><input style="width: 310px;" class="textinput" type="text"/></td>
+			</tr>
+		</table>
+	</div>
+</div>
+		<table id="test"></table>
+						
+						
+					</div>
+		  		</div> 
+		
+		</td>
+	</tr>
+</table>
+
+
+		  		
+			</div> 
+
+
+		</div>
+	</div>
+</div>
+
+<div class="formdiv border no-double-top" style="padding:10px 0 6px;">
+		<div class="float-right">
+			<a class="button btn-save" title="上一步" href="1.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-back-light" alt="" />上一步</span><s></s></a>
+			<a class="button btn-save" title="下一步" href="3.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-ok-light" alt="" />下一步</span><s></s></a>
+			<a class="button btn-back" title="取消" href="1.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />取消</span><s></s></a>
+		</div>
+		<div style="padding:10px 0 0 20px;" class="red_low"><img src="themes/default/images/blank.gif" class="icon ico-info" alt="" style="margin-top:-4px;" />如果不引用直接点击下一步</div>
+		<div class="clearfix"></div>
+</div>
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>国家标准管理</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+	
+			$('#test').datagrid({
+				title:false,
+				iconCls:false,
+				fitColumns:true,
+				width:"auto",
+				height:473,
+				nowrap: false,
+				striped: true,
+				collapsible:true,
+				url:'data/d1.json',
+			//	sortName: 'code',
+			//	sortOrder: 'desc',
+				remoteSort: false,
+				idField:'code',
+				frozenColumns:[[
+	                {field:'ck',checkbox:true}
+				]],
+				columns:[[
+			        {field:'col1',title:'数据项名',width:120,align:"left"},
+					{field:'col2',title:'名称',width:120,align:"left"},
+					{field:'name',title:'源标准',width:80,align:"center"},
+					{field:'addr',title:'数据类型',width:80,align:"center"},
+					{field:'col4',title:'数据长度',width:80,align:"center"},
+					{field:'col5',title:'数据规范',width:100,align:"center"
+						,formatter: function(value,row,index){return '<a href="">查询</a>&nbsp;&nbsp;<a href="">显示</a>';}
+					},
+					{field:'col6',title:'查看',width:60,align:"center"
+						,formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-view" alt="" /></a>';}
+					},
+					{field:'col7',title:'可用标志',width:80,align:"center"
+						,formatter: function(value,row,index){return '启用';}
+					}
+				]],
+				pagination:true
+			});
+
+//树结构
+$('#tt2').tree({
+	checkbox: true,
+	url: 'data/resourcetype.json',
+	onClick:function(node){
+		$(this).tree('toggle', node.target);
+		//alert('you click '+node.text);
+	},
+	onContextMenu: function(e, node){
+		e.preventDefault();
+		$('#tt2').tree('select', node.target);
+		$('#mm').menu('show', {
+			left: e.pageX,
+			top: e.pageY
+		});
+	}
+});
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>国家标准管理</strong></div></div>
+<div class="border no-double-top">
+	<div class="box">
+
+
+
+		<div class="usertype-wrap">
+
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="300" valign="top">
+				<div class="inner-west">
+				
+					<div class="ui-layout-head">数据集列表</div>
+					
+					<!--文本框查询 begin-->
+					<div class="sideleft-panel-search">
+						<dl>
+							<dd><input class="textinput" style="width:256px;padding:3px 3px 3px;" id="code" /></dd><dd style="padding-right:0;"><a id="serch" href="javascript:void(0);"><img src="themes/default/images/blank.gif" class="icon ico-search-24" alt="" /></a></dd>
+						</dl>
+					</div>
+					<!--文本框查询 结束-->
+							
+					<div class="inner-panel-box" id="weastCotent" >
+						<div class="addpathtips">
+						<span class="exaction"><a href="javascript:void(0)" title="展开全部"><img src="themes/default/images/blank.gif" class="icon ico-plus" alt="" /></a><a href="javascript:void(0)"><img src="themes/default/images/blank.gif" class="icon ico-minus" alt="" /></a></span>选择字典</div>
+					
+						<div id="tree" style="border:1px solid #ccc;background:#fff;height: 502px; overflow-y: auto;">
+							<ul id="tt2"></ul>
+						</div>
+					</div>
+					
+					<dl class="footerBar">
+						<dd>&nbsp;<span class="red_low">*</span>点击父节点显示其子节点的定义</dd>
+					</dl>
+				</div> 
+		</td>
+		<td width="4"></td>
+		<td valign="top" id="td-c">
+			
+			<table width="100%" cellpadding="0" cellspacing="0" class="tablebase">
+				<tr class="thead">
+					<th align="left">表名</th>
+					<th align="left">中文名</th>
+					<th align="left">标准源</th>
+					<th align="left">状态</th>
+				</tr>
+				<tr class="tbody">
+					<td>GGIEKEGG</td>
+					<td>班级</td>
+					<td>-</td>
+					<td>启用</td>
+				</tr>
+				<tr class="thead">
+					<th align="left" colspan="4">描述</th>
+				</tr>
+				<tr class="tbody">
+					<td colspan="4">地粗俗在JJOO,摇滚捏晨跑胆粗气壮奇，奈厘中有右</td>
+				</tr>
+			</table>
+			
+			<div class="repeat searchdiv">
+	<div class="box">
+		<dl>
+			<dd>
+			<a title="下载模板" class="button btn-back"><i></i><span><img class="icon ico-download" alt="" src="themes/default/images/blank.gif">下载模板</span><s></s></a>
+			<a title="导入" class="button btn-back"><i></i><span><img class="icon ico-import" alt="" src="themes/default/images/blank.gif">导入</span><s></s></a>
+			<a title="导出" class="button btn-back"><i></i><span><img class="icon ico-exp" alt="" src="themes/default/images/blank.gif">导出</span><s></s></a>
+			</dd>
+		</dl>
+	</div>
+</div>
+			
+			<table id="test"></table>
+		</dt>
+	</tr>
+	</table>
+			</div> 
+
+
+		</div>
+	</div>
+</div>
+
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+
+</body>
+</html>

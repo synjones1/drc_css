@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>增加字段</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+
+//树结构
+$('#tt2').tree({
+	checkbox: true,
+	url: 'data/resourcetype.json',
+	onClick:function(node){
+		$(this).tree('toggle', node.target);
+		//alert('you click '+node.text);
+	},
+	onContextMenu: function(e, node){
+		e.preventDefault();
+		$('#tt2').tree('select', node.target);
+		$('#mm').menu('show', {
+			left: e.pageX,
+			top: e.pageY
+		});
+	}
+});
+
+$('#dd').dialog({  
+    title: '操作提示',  
+    width: 340,  
+    height: 200,  
+    closed: true,  
+    cache: false,  
+    modal: true  
+});
+$("#action-add").click(function(){
+	$('#dd').dialog("open");
+});
+
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>国家标准管理</strong></div></div>
+<div class="border no-double-top">
+	<div class="box">
+
+
+
+		<div class="usertype-wrap">
+
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="300" valign="top">
+				<div class="inner-west">
+				
+					<div class="ui-layout-head">标准字典列表</div>
+					
+					<!--文本框查询 begin-->
+					<div class="sideleft-panel-search">
+						<dl>
+							<dd><input class="textinput" style="width:256px;padding:3px 3px 3px;" id="code" /></dd><dd style="padding-right:0;"><a id="serch" href="javascript:void(0);"><img src="themes/default/images/blank.gif" class="icon ico-search-24" alt="" /></a></dd>
+						</dl>
+					</div>
+					<!--文本框查询 结束-->
+							
+					<div class="inner-panel-box" id="weastCotent" >
+						<div class="addpathtips">
+						<span class="exaction"><a href="javascript:void(0)" title="展开全部"><img src="themes/default/images/blank.gif" class="icon ico-plus" alt="" /></a><a href="javascript:void(0)"><img src="themes/default/images/blank.gif" class="icon ico-minus" alt="" /></a></span>选择字典</div>
+					
+						<div id="tree" style="border:1px solid #ccc;background:#fff;height: 385px; overflow-y: auto;">
+							<ul id="tt2"></ul>
+						</div>
+					</div>
+					
+					<dl class="footerBar">
+						<dd>&nbsp;<span class="red_low">*</span>点击父节点显示其子节点的定义</dd>
+					</dl>
+				</div> 
+		</td>
+		<td width="4"></td>
+		<td valign="top" id="td-c">			
+		  		<div class="inner-center">
+		  		<div class="ui-layout-head">添加字段</div>
+					<div class="ui-layout-baseinfo" style="height:auto;">
+
+<div class="formdiv" style="padding:0 1px;margin:0;">
+	<div class="box">
+		<table cellspacing="0" cellpadding="10" class="formtable">
+			<tbody>
+			
+			<tr>
+				<th>中文名称：</span></th>
+				<td colspan="3"><input type="text" class="textinput" style="width:250px;"/> <span class="red_low">*</span></td>
+			</tr>
+			
+			<tr>
+				<th valign="top">编<span style="padding-left:28px;">号：</span></th>
+				<td valign="top" colspan="3"><input type="text" class="textinput" style="width:250px;"/> <span class="red_low">*</span></td>
+			</tr>
+			
+			<tr>
+				<th width="120">字段含意类型：</th>
+				<td colspan="3"><select style="width:260px;"><option>字符串</option></select> <span class="red_low">*</span></td>
+			</tr>
+			
+			<tr>
+				<th width="120">数据类型：</th>
+				<td colspan="3"><select style="width:260px;"><option>字符串</option></select> <span class="red_low">*</span></td>
+			</tr>
+			
+			<tr>
+				<th width="120">数据长度：</th>
+				<td colspan="3"><input type="text" class="textinput" style="width:250px;"/> <span class="red_low">*</span></td>
+			</tr>
+			
+			<tr>
+				<th>数据约束：</th>
+				<td colspan="3">
+				<input type="checkbox" class="checkbox"/>主键&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="checkbox" class="checkbox"/>不为空&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="checkbox" class="checkbox"/>唯一
+				</td>
+			</tr>
+			<tr>
+				<th height="183" valign="top">&nbsp;</th>
+				<td valign="top" colspan="3">
+				<a title="增加" class="button btn-save" id="action-add"><i></i><span>增加</span><s></s></a>
+				<a title="返回" class="button btn-back"><i></i><span><img class="icon ico-back" alt="" src="themes/default/images/blank.gif">返回</span><s></s></a>
+				</td>
+			</tr>
+			
+		</table>
+	</div>
+</div>
+						
+						
+					</div>
+		  		</div> 
+			
+		</dt>
+	</tr>
+	</table>
+			</div> 
+
+
+		</div>
+	</div>
+</div>
+
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+<div id="dd">
+			<br/>
+			<table align="center">
+				<tr>
+					<td><img src="themes/default/images/blank.gif" class="icon ico-success-b" alt="" /></td>
+					<td>添加成功！</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<br/>
+						<div class="confirm-button-arrow">
+							<a class="button btn-save" title="确定"><i></i><span>确定&nbsp;</span><s></s></a>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+			<br/>
+
+</div>
+</body>
+</html>

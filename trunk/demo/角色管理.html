@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>角色管理</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+	
+			$('#test').datagrid({
+				title:false,
+				iconCls:false,
+				fitColumns:true,
+				width:"auto",
+				height:473,
+				nowrap: false,
+				striped: true,
+				collapsible:true,
+				url:'data/d1.json',
+			//	sortName: 'code',
+			//	sortOrder: 'desc',
+				remoteSort: false,
+				idField:'code',
+				frozenColumns:[[
+	                {field:'ck',checkbox:true}
+				]],
+				columns:[[
+			        {field:'col1',title:'序号',width:50,align:"left"},
+					{field:'col2',title:'角色名称',width:120,align:"left"},
+					{field:'col3',title:'角色代码',width:60,align:"left"},
+					{field:'col4',title:'状态',width:50,align:"center",
+						formatter: function(value,row,index){return '<a href="" class="red_low">停用</a>';}},
+					{field:'col5',title:'编辑',width:50,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-edit" alt="" /></a>';}
+					},
+					{field:'col6',title:'删除',width:50,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" /></a>';}
+					}
+				]],
+				pagination:true,
+				toolbar:[{
+					id:'btnadd',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-addserver" alt="" />添加',
+					handler:function(){window.location.href="添加角色.html"},
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-edit" alt="" />修改',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />删除',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-check" alt="" />授权',
+					handler:function(){window.location.href="角色权限.html"},
+					iconCls:false
+				}]
+			});
+
+//树结构
+$('#tt2').tree({
+	checkbox: true,
+	url: 'data/resourcetype.json',
+	onClick:function(node){
+		$(this).tree('toggle', node.target);
+		//alert('you click '+node.text);
+	},
+	onContextMenu: function(e, node){
+		e.preventDefault();
+		$('#tt2').tree('select', node.target);
+		$('#mm').menu('show', {
+			left: e.pageX,
+			top: e.pageY
+		});
+	}
+});
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>角色管理</strong></div></div>
+	
+	<div class="tabContent">
+
+		<ul class="expand-item-ul">
+			<li><dl><dt>角色名称</dt><dd><input class="textinput_s" type="text"/></dd></dl></li>
+			<li><dl><dt>角色代码</dt><dd><input class="textinput_s" type="text"/></dd></dl></li>
+			<li style="margin-top: -5px;">
+				<a title="查询" class="button btn-save" id="confirm" style="margin-top: 1px;"><i></i><span><img class="icon ico-zoomlight" alt="" src="themes/default/images/blank.gif">查 询</span><s></s></a>
+			</li>
+		</ul>
+		
+	</div>
+	
+	
+<div class="no-double-top">
+	<div class="box">
+
+
+			
+			<table id="test"></table>
+
+
+
+		</div>
+	</div>
+</div>
+
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+
+</body>
+</html>

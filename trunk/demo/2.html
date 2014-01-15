@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数据资源中心</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery-powerFloat-min.js"></script>
+<script type="text/javascript" src="scripts/plugins/dialog.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+	var LoadingText = "加载";
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+	
+			$('#tt2').tree({
+				checkbox: true,
+				url: 'data/resourcetype.json',
+				onClick:function(node){
+					$(this).tree('toggle', node.target);
+					//alert('you click '+node.text);
+				},
+				onContextMenu: function(e, node){
+					e.preventDefault();
+					$('#tt2').tree('select', node.target);
+					$('#mm').menu('show', {
+						left: e.pageX,
+						top: e.pageY
+					});
+				}
+			});
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>学校标准</strong></div></div>
+<div class="border no-double-top">
+	<div class="box">
+
+		<div class="usertype-wrap">
+
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="300" valign="top">
+				<div class="inner-west">
+				
+					<div class="ui-layout-head">请选择新建类型的分类路径</div>
+					
+					<!--文本框查询 begin-->
+					<div class="sideleft-panel-search">
+						<dl>
+							<dd><input class="textinput" style="width:256px;padding:3px 3px 3px;" id="code" /></dd><dd style="padding-right:0;"><a id="serch" href="javascript:void(0);"><img src="themes/default/images/blank.gif" class="icon ico-search-24" alt="" /></a></dd>
+						</dl>
+					</div>
+					<!--文本框查询 结束-->
+							
+					<div class="inner-panel-box" id="weastCotent" >
+						<div class="addpathtips">
+						<span class="exaction"><a href="javascript:void(0)" title="展开全部"><img src="themes/default/images/blank.gif" class="icon ico-plus" alt="" /></a><a href="javascript:void(0)"><img src="themes/default/images/blank.gif" class="icon ico-minus" alt="" /></a></span>
+						分类(<span class="red_low">点击选择新建路径</span>)</div>
+					
+						<div id="tree" style="border:1px solid #ccc;background:#fff;height: 330px; overflow-y: auto;">
+							<ul id="tt2"></ul>
+							<div id="mm" class="easyui-menu" style="width:120px;">  
+						    <div onclick="append()" data-options="iconCls:'icon-add'">添加</div>  
+						    <div onclick="edittree()" data-options="iconCls:'icon-edit'">编辑</div>  
+						    <div class="menu-sep"></div>  
+						    <div onclick="remove()" data-options="iconCls:'icon-remove'">删除</div>  
+						</div>  
+
+						</div>
+					</div>
+					
+					<dl class="footerBar">
+						<dd>&nbsp;<span class="red_low">*</span>点击父节点显示其子节点的定义</dd>
+					</dl>
+				</div> 
+		
+		</td>
+		<td width="4"></td>
+		<td valign="top">
+		  		<div class="inner-center">
+		  		<div class="ui-layout-head"></div>
+					<div class="ui-layout-baseinfo" style="height:auto;">
+
+<div class="formdiv" style="padding:0 1px;margin:0;">
+	<div class="box">
+		<table cellspacing="0" cellpadding="10" class="formtable">
+			<tbody>
+			<tr>
+				<th width="120">分类路径：</th>
+				<td><img src="themes/default/images/blank.gif" class="icon ico-folder-16" alt="" />学校标准 <font face="Simsun">&gt;</font> 综合管理科 <font face="Simsun">&gt;</font> 学生管理类代码集</td>
+			</tr>
+			
+			<tr>
+				<th>类<span style="padding-left:28px;">型：</span></th>
+				<td><input class="radio" type="radio" name="type" id="cat"/>分类<span style="padding-left:40px;"><input class="radio" type="radio" name="type"/>表</span></td>
+			</tr>
+			
+			<tr>
+				<th>创建类型：</th>
+				<td><select style="width: 320px;"><option>请选择创建类型</option><option selected>引用标准</option></select></td>
+			</tr>
+			<tr>
+				<th>中文名称：</th>
+				<td><input style="width: 310px;" class="textinput" type="text"/></td>
+			</tr>
+			<tr>
+				<th height="241" valign="top">描<span style="padding-left:28px;">述：</span></th>
+				<td valign="top"><textarea cols="37" rows="6"></textarea></td>
+			</tr>
+		</table>
+	</div>
+</div>
+						
+						
+					</div>
+		  		</div> 
+		
+		</td>
+	</tr>
+</table>
+
+
+		  		
+			</div> 
+
+
+		</div>
+	</div>
+</div>
+
+<div class="formdiv border no-double-top" style="padding:10px 0 6px;">
+		<div class="float-right">
+			<a class="button btn-save" title="上一步" href="1.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-back-light" alt="" />上一步</span><s></s></a>
+			<a class="button btn-save" title="下一步" href="3.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-ok-light" alt="" />下一步</span><s></s></a>
+			<a class="button btn-back" title="取消" href="1.html"><i></i><span><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />取消</span><s></s></a>
+		</div>
+		<div class="clearfix"></div>
+</div>
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+</body>
+</html>

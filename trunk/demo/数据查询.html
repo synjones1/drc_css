@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>数据查询</title>
+<link href="themes/default/style.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/plugins/ui-layout-pane.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="themes/default/plugins/easyui.css" />
+<script type="text/javascript" src="scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+$(function() {
+	$.ajaxSetup ({
+	    cache: false
+	});
+	
+			$('#test').datagrid({
+				title:false,
+				iconCls:false,
+				fitColumns:true,
+				width:"auto",
+				height:473,
+				nowrap: false,
+				striped: true,
+				collapsible:true,
+				url:'data/d1.json',
+			//	sortName: 'code',
+			//	sortOrder: 'desc',
+				remoteSort: false,
+				idField:'code',
+				frozenColumns:[[
+	                {field:'ck',checkbox:true}
+				]],
+				columns:[[
+			        {field:'col1',title:'字段一',width:120,align:"left"},
+					{field:'col2',title:'字段二',width:120,align:"left"},
+					{field:'name',title:'状态',width:80,align:"center"
+						,formatter: function(value,row,index){return "可用";}
+					},
+					{field:'addr',title:'修改',width:50,align:"center"
+						,formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-edit" alt="" /></a>';}
+					},
+					{field:'col4',title:'删除',width:50,align:"center"
+						,formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" /></a>';}
+					},
+					{field:'col5',title:'启用/停用',width:80,align:"center"
+						,formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-lock" alt="" /></a>';}
+					}
+				]],
+				pagination:true,
+				toolbar:[{
+					id:'btnadd',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-addserver" alt="" />添加',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-edit" alt="" />修改',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-del" alt="" />删除',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-enabled" alt="" />启用',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-batch" alt="" />合并',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-move" alt="" />拆分',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-change" alt="" />变更',
+					iconCls:false
+				},{
+					id:'btnedit',
+					text:'<img src="themes/default/images/blank.gif" class="icon ico-view" alt="" />查看映射',
+					iconCls:false
+				}]
+			});
+
+			$('#test2').datagrid({
+				title:false,
+				iconCls:false,
+				fitColumns:true,
+				width:"auto",
+				height:474,
+				nowrap: false,
+				striped: true,
+				collapsible:true,
+				url:'data/d1.json',
+				sortName: 'code',
+				sortOrder: 'desc',
+				remoteSort: false,
+				idField:'code',
+				frozenColumns:[[
+	                {field:'ck',checkbox:true}
+				]],
+				columns:[[
+			        {field:'col1',title:'字段一',width:120},
+					{field:'col2',title:'字段二',width:120},
+					{field:'name',title:'状态',width:80,align:"center",
+						formatter: function(value,row,index){return "可用";}
+					},
+					{field:'addr',title:'修改',width:50,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-edit" alt="" /></a>';}
+					},
+					{field:'col4',title:'删除',width:50,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" /></a>';}
+					},
+					{field:'col5',title:'启用/停用',width:80,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-lock" alt="" /></a>';}
+					}
+				]],
+				pagination:true
+			});
+			
+			$('#test3').datagrid({
+				title:false,
+				iconCls:false,
+				fitColumns:true,
+				width:"auto",
+				height:474,
+				nowrap: false,
+				striped: true,
+				collapsible:true,
+				url:'data/d1.json',
+				sortName: 'code',
+				sortOrder: 'desc',
+				remoteSort: false,
+				idField:'code',
+				frozenColumns:[[
+	                {field:'ck',checkbox:true}
+				]],
+				columns:[[
+			        {field:'col1',title:'字段一',width:120},
+					{field:'col2',title:'字段二',width:120},
+					{field:'name',title:'状态',width:80,align:"center",
+						formatter: function(value,row,index){return "可用";}
+					},
+					{field:'addr',title:'修改',width:50,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-edit" alt="" /></a>';}
+					},
+					{field:'col4',title:'删除',width:50,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-del" alt="" /></a>';}
+					},
+					{field:'col5',title:'启用/停用',width:80,align:"center",
+						formatter: function(value,row,index){return '<a href=""><img src="themes/default/images/blank.gif" class="icon ico-lock" alt="" /></a>';}
+					}
+				]],
+				pagination:true
+			});
+
+//树结构
+$('#tt2').tree({
+	checkbox: true,
+	url: 'data/resourcetype.json',
+	onClick:function(node){
+		$(this).tree('toggle', node.target);
+		//alert('you click '+node.text);
+	},
+	onContextMenu: function(e, node){
+		e.preventDefault();
+		$('#tt2').tree('select', node.target);
+		$('#mm').menu('show', {
+			left: e.pageX,
+			top: e.pageY
+		});
+	}
+});
+
+
+$('#tt').tabs({ 
+	border:false,
+	plain:true,
+	width:$("#td-c").width()
+});  
+
+});
+</script>
+</head>
+<body>
+<div id="header"><!--#载入头部#--></div>
+<div id="nav"><!--#载入菜单#--></div>
+<div id="content">
+
+	<div id="mainbox">
+		<br/>	
+	<div class="titlediv repeat"><div class="title-inner"><img src="themes/default/images/blank.gif" class="icon ico-type" alt="" /><strong>国家标准字典管理</strong></div></div>
+<div class="border no-double-top">
+	<div class="box">
+
+
+
+		<div class="usertype-wrap">
+
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="300" valign="top">
+				<div class="inner-west">
+				
+					<div class="ui-layout-head">国家标准字典列表</div>
+					
+					<!--文本框查询 begin-->
+					<div class="sideleft-panel-search">
+						<dl>
+							<dd><input class="textinput" style="width:256px;padding:3px 3px 3px;" id="code" /></dd><dd style="padding-right:0;"><a id="serch" href="javascript:void(0);"><img src="themes/default/images/blank.gif" class="icon ico-search-24" alt="" /></a></dd>
+						</dl>
+					</div>
+					<!--文本框查询 结束-->
+							
+					<div class="inner-panel-box" id="weastCotent" >
+						<div class="addpathtips">
+						<span class="exaction"><a href="javascript:void(0)" title="展开全部"><img src="themes/default/images/blank.gif" class="icon ico-plus" alt="" /></a><a href="javascript:void(0)"><img src="themes/default/images/blank.gif" class="icon ico-minus" alt="" /></a></span>选择字典</div>
+					
+						<div id="tree" style="border:1px solid #ccc;background:#fff;height: 366px; overflow-y: auto;">
+							<ul id="tt2"></ul>
+						</div>
+					</div>
+					
+					<dl class="footerBar">
+						<dd>&nbsp;<span class="red_low">*</span>点击父节点显示其子节点的定义</dd>
+					</dl>
+				</div> 
+		</td>
+		<td width="4"></td>
+		<td valign="top" id="td-c">
+			
+			
+			
+<div id="tt">
+    <div title='表模式' iconCls="icon ico-datatabletype">
+        <table id="test"></table>
+    </div>
+    <div title='表数据' iconCls="icon ico-datatable" closable="true">
+        <table id="test2"></table>
+    </div>
+    <div title="映射关系" iconCls="icon ico-yingshe" closable="true">
+        <table id="test3"></table>
+    </div>
+</div>
+						
+			
+		</dt>
+	</tr>
+	</table>
+
+		
+
+
+			</div> 
+
+
+		</div>
+	</div>
+</div>
+
+
+	</div>
+	
+<div class="clearfix"></div>
+</div>
+
+<div id="footer"><!--#载入底部版权#--></div>
+
+
+</body>
+</html>
